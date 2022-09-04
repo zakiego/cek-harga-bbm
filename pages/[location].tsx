@@ -1,9 +1,10 @@
 import { Heading, SimpleGrid, Text, VStack } from "@chakra-ui/react";
-import { GetServerSideProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 import FuelCard from "~/components/FuelCard";
 import Layout from "~/components/Layout";
 import { getFuelImage } from "~/utils/dictImage";
+import { dictionaryLocations } from "~/utils/dictionaryLocation";
 import { getURL } from "~/utils/getUrl";
 
 interface Props {
@@ -42,7 +43,18 @@ const Index = ({ resp }: Props) => {
 
 export default Index;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = dictionaryLocations.map((loc) => {
+    return { params: { location: loc.id } };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
   const { location } = context.params as { location: string };
 
   const resp: Resp = await fetch(`${getURL}/api/update/${location}`).then(
