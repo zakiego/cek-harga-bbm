@@ -26,7 +26,11 @@ const Navbar = () => {
         </Heading>
       </Link>
       <Spacer />
-      <a href="http://github.com/zakiego" target="_blank" rel="noreferrer">
+      <a
+        href="https://github.com/zakiego/cek-harga-bbm"
+        target="_blank"
+        rel="noreferrer"
+      >
         <Icon as={GoMarkGithub} w={6} h={6} color="gray.600" />
       </a>
     </HStack>
