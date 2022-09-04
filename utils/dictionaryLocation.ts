@@ -11,7 +11,7 @@ export interface DictionaryLocations {
   name: string;
 }
 
-const dictionaryLocations = [
+export const dictionaryLocations = [
   {
     id: "aceh",
     name: "Prov. Nanggroe Aceh Darussalam",
